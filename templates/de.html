@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Auswertung</title>
+    <style>@font-face {
+        font-family: "Calibri";
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/l/font?kit=J7afnpV-BGlaFfdAhLEY6w&skey=a1029226f80653a8&v=v11) format("woff2");
+    }
+
+    @font-face {
+        font-family: "Calibri";
+        font-style: normal;
+        font-weight: 700;
+        src: url(https://fonts.gstatic.com/l/font?kit=J7aanpV-BGlaFfdAjAo9_pxqHw&skey=cd2dd6afe6bf0eb2&v=v11) format("woff2");
+    }
+
+    @page {
+        size: A4;
+        margin: 12.5mm 25mm 20mm;
+
+        @bottom-right {
+            content: '- ' counter(page) ' -';
+            font-size: 7pt;
+        }
+    }
+
+    @page :first {
+        margin: 20mm 20mm 8mm;
+
+        @bottom-right {
+            content: none
+        }
+    }
+
+    :root {
+        font: normal normal 400 11pt/1.2 "Calibri", sans-serif;
+        color: #000
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box
+    }
+
+    body {
+        margin: 0;
+        padding: 0
+    }
+
+    @media screen {
+        body {
+            width: 210mm;
+            margin: 0 auto;
+            padding: 0 25mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 8px hsl(0 0% 0% / 50%);
+        }
+    }
+
+    a {
+        font-weight: 700;
+        text-decoration: none;
+        color: inherit
+    }
+
+    section[class^=page] {
+        height: 297mm
+    }
+    .page1 h1 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 22pt;
+        margin: 180pt 0 16pt
+    }
+
+    .page1 .subtitle {
+        text-align: center;
+        font-weight: 700;
+        margin: 0
+    }
+
+    .page1 .subtitle time {
+        display: block;
+        font-weight: 400
+    }
+
+    .page1 address {
+        display: block;
+        text-align: center;
+        font-style: normal;
+        font-size: 9pt;
+        margin: 44pt 0 0
+    }
+
+    .page1 address img {
+        width: 60.4mm;
+        display: block;
+        margin: 0 auto .5em
+    }
+
+    [class^=page] header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 10pt;
+        column-gap: 2ch;
+    }
+
+    [class^=page] header::after {
+        content: "";
+        display: block;
+        width: 91.45%;
+        height: 1pt;
+        background: #000
+    }
+
+    [class^=page] header img {
+        width: 37.3mm
+    }
+
+    [class^=page] .content h2 {
+        font-size: 14pt;
+        font-weight: 700;
+        line-height: 2;
+        margin: 0 0 1.1mm
+    }
+    [class^=page] .content p {
+        margin-bottom: 1.2em;
+    }
+    [class^=page] .content p.nmbe {
+        margin-bottom: 0;
+    }
+    [class^=page] .content ul.circle {
+        padding-left: 6em;
+    }
+    [class^=page] .content ul.circle > li {
+        list-style-type: circle;
+        padding-left: .6em;
+    }
+
+    #diagram {
+        width: 100%;
+        height: auto;
+        margin: 1rem 0 2rem
+    }
+
+    h3, h4 {
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 1rem 0
+    }
+
+    h4 {
+        margin: 0
+    }
+
+    p {
+        margin: 0
+    }
+
+    ul {
+        margin: 0
+    }
+    footer {
+        margin-top: 350pt;
+        display: flex;
+        justify-content: space-between;
+    }
+    footer img {
+        width: auto;
+        height: 28pt;
+    }
+
+    span.evaluation_for,
+    span.report_for {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    span.evaluation_for {
+        width: 170mm;
+    }
+    span.report_for {
+        width: 115mm;
+    }
+    </style>
+</head>
+<body>
+<section class="page1">
+    <h1>
+        IT-spezifischer Berufsinteressentest<br>
+        ITONBOARD
+    </h1>
+    <p class="subtitle">
+        Auswertung
+        <span class="evaluation_for">für {{ first_name }} {{ last_name }}</span>
+        <time datetime="{{ date_iso }}">{{ date_str }}</time>
+    </p>
+    <address>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </address>
+    <footer class="footer">
+        <img src="{{ ia_logo }}" alt="Interaktiv">
+        <img src="{{ tb_logo }}" alt="Talenbrücke">
+        <img src="{{ kup_logo }}" alt="klein&amp;partner">
+        <img src="{{ abstract_logo }}" alt="&gt;_abstract">
+        <img src="{{ ifc_logo }}" alt="Intertnational Formation Center">
+    </footer>
+</section>
+<section class="page2">
+    <header>
+        <div>
+            IT-spezifischer Berufsinteressentest ITONBOARD
+            <span class="report_for">Ergebnisbericht {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+    <div class="content">
+        <h2>Deine beruflichen Neigungen - Welche Berufe dich interessieren</h2>
+        <p>
+            Beim IT-Berufsinteressentest von ITONBOARD hast du verschiedene Tätigkeiten bewertet, je nachdem wie interessant bzw. uninteressant du diese findest. Hier hast du Punkte von 1 bis 5 vergeben. Diese Tätigkeiten lassen sich beruflichen IT-Bereichen zuordnen. Das folgende Balkendiagramm zeigt dir, wie groß dein Interesse für die unterschiedlichen IT-Berufsbereiche ist.
+            <br>
+            Je höher der Balken, desto größer ist dein Interesse für diesen Bereich. In den Balken siehst du auch, wie viele Punkte du insgesamt in dem jeweiligen Bereich vergeben hast.
+        </p>
+        <svg id="diagram" viewBox="0 0 454 392" preserveAspectRatio="xMidYMid meet">
+            <style>
+                text {
+                    font-weight: 400;
+                    font-size: 11px;
+                    line-height: 1;
+                    font-family: "Calibri", sans-serif;
+                }
+
+                text a {
+                    color: inherit;
+                    fill: child;
+                    text-decoration: none;
+                    font-weight: inherit;
+                }
+            </style>
+            <!-- diagram background -->
+            <line x1="21.5" y1="5.5" x2="454" y2="5.5" stroke="#bababa"/>
+            <line x1="18" y1="28" x2="454" y2="28" stroke="#999"/>
+            <line x1="21.5" y1="50.5" x2="454" y2="50.5" stroke="#bababa"/>
+            <line x1="18" y1="73" x2="454" y2="73" stroke="#999"/>
+            <line x1="21.5" y1="95.5" x2="454" y2="95.5" stroke="#bababa"/>
+            <line x1="18" y1="118" x2="454" y2="118" stroke="#999"/>
+            <line x1="21.5" y1="140.5" x2="454" y2="140.5" stroke="#bababa"/>
+            <line x1="18" y1="163" x2="454" y2="163" stroke="#999"/>
+            <line x1="21.5" y1="185.5" x2="454" y2="185.5" stroke="#bababa"/>
+            <line x1="18" y1="208" x2="454" y2="208" stroke="#999"/>
+            <line x1="21.5" y1="230.5" x2="454" y2="230.5" stroke="#bababa"/>
+            <line x1="18" y1="253" x2="454" y2="253" stroke="#999"/>
+
+            <line x1="22" y1="5.5" x2="22" y2="253" stroke="#999"/>
+            <line x1="94" y1="253" x2="94" y2="257" stroke="#999"/>
+            <line x1="166" y1="253" x2="166" y2="257" stroke="#999"/>
+            <line x1="238" y1="253" x2="238" y2="257" stroke="#999"/>
+            <line x1="310" y1="253" x2="310" y2="257" stroke="#999"/>
+            <line x1="382" y1="253" x2="382" y2="257" stroke="#999"/>
+            <line x1="453.5" y1="253" x2="453.5" y2="257" stroke="#999"/>
+
+            <!-- pillars | y = 5.5 + (55 - x) / 55 * 247.5 | height = 247.5 * x / 55 -->
+            <rect x="44" y="{{ he_y }}" width="28" height="{{ he_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="116" y="{{ ha_y }}" width="28" height="{{ ha_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="188" y="{{ se_y }}" width="28" height="{{ se_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="260" y="{{ ge_y }}" width="28" height="{{ ge_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="332" y="{{ ka_y }}" width="28" height="{{ ka_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="404" y="{{ pm_y }}" width="28" height="{{ pm_height }}" fill="#bbb" stroke="#000"/>
+
+            <!-- pillar labels | y = 9 + (247.5 - (x / 55 * 123.75)) -->
+            <text x="58" y="{{ he_label }}" text-anchor="middle">{{ he }}</text>
+            <text x="130" y="{{ ha_label }}" text-anchor="middle">{{ ha }}</text>
+            <text x="202" y="{{ se_label }}" text-anchor="middle">{{ se }}</text>
+            <text x="274" y="{{ ge_label }}" text-anchor="middle">{{ ge }}</text>
+            <text x="346" y="{{ ka_label }}" text-anchor="middle">{{ ka }}</text>
+            <text x="418" y="{{ pm_label }}" text-anchor="middle">{{ pm }}</text>
+
+            <!-- y axis labels -->
+            <text x="14" y="31" text-anchor="end">50</text>
+            <text x="14" y="76" text-anchor="end">40</text>
+            <text x="14" y="121" text-anchor="end">30</text>
+            <text x="14" y="166" text-anchor="end">20</text>
+            <text x="14" y="211" text-anchor="end">10</text>
+            <text x="14" y="256" text-anchor="end">0</text>
+
+            <!-- x axis labels -->
+            <text x="-258.5" y="61.5" text-anchor="end" transform="rotate(270)">
+                <a xlink:href="#he">Hardware-Entwicklung</a>
+            </text>
+            <text x="-258.5" y="133.5" text-anchor="end" transform="rotate(270)">
+                <a xlink:href="#ha">Hardware-Administration</a>
+            </text>
+            <text x="-258.5" y="205.5" text-anchor="end" transform="rotate(270)">
+                <a xlink:href="#se">Software-Entwicklung</a>
+            </text>
+            <text y="256.5" text-anchor="middle" transform="rotate(270)">
+                <a xlink:href="#ge">
+                    <tspan x="-309.5" dy="1.2em">Gestalterischer Bereich</tspan>
+                    <tspan x="-309.5" dy="1.2em">[Entwicklung & Design]</tspan>
+                </a>
+            </text>
+            <text y="329" text-anchor="middle" transform="rotate(270)">
+                <a xlink:href="#ka">
+                    <tspan x="-311.5" dy="1.2em">Käufmännischer Bereich</tspan>
+                    <tspan x="-311.5" dy="1.2em">[Vermarkten & Vertrieb]</tspan>
+                </a>
+            </text>
+            <text x="-258.5" y="421.5" text-anchor="end" transform="rotate(270)">
+                <a xlink:href="#pm">Projektmanagement</a>
+            </text>
+        </svg>
+        <p>
+            In der Grafik erkennst du, wie dein momentanes Interesse über verschiedene IT-Berufsbereiche verteilt ist. Auf der nächsten Seite ist kurz erläutert, welche charakteristischen Eigenschaften Personen aufweisen, die in diesen Berufsfeldern arbeiten und um was es in den verschiedenen Bereichen geht, d.h. welche Aufgaben und Tätigkeiten eine Person unter anderem erwarten könnten.
+        </p>
+    </div>
+</section>
+<section class="page3">
+    <header>
+        <div>
+            IT-spezifischer Berufsinteressentest ITONBOARD
+            <span class="report_for">Ergebnisbericht {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+    <div class="content">
+        <h3 id="he">Hardware-Entwicklung</h3>
+        <p>Hardware-Entwickler:innen sind für die Geräteentwicklung zuständig. Der Begriff Hardware umfasst alles, was zur technischen Ausrüstung eines Systems gehört, wie Computerteile, Modems oder USB-Sticks. Man unterscheidet zwischen verbauten und unverbauten Hardware-Komponenten: Verbaut sind zum Beispiel die Bauteile eines Smartphones, unverbaut sind Maus und Tastatur. Einfach gesagt ist alles, was man anfassen kann, Hardware, während Software nicht-physische Komponenten sind. </p>
+        <p>Um als Hardwareentwickler arbeiten zu können, benötigt man ein abgeschlossenes Hochschulstudium, zum Beispiel in Elektrotechnik oder Naturwissenschaften</p>
+        <p class="nmbe">Kein Studium zielt nur auf Hardwareentwicklung ab, sodass man in jedem Fall viel Grundlagenwissen im Bereich IT mitnimmt und früh mit Weiterbildungen zu Hardware anfangen sollte. Im Studium kann man sich zum Beispiel in Richtung Telematik, Hardware-Software-Design oder Netzwerk- und Kommunikationstechnik spezialisieren. Neben Ausbildung und praktischem Wissen sollte man Folgendes mitbringen:</p>
+        <ul class="circle">
+            <li>tiefes technisches Verständnis und sehr gute IT-Kenntnisse</li>
+            <li>sicherer Umgang mit Programmiersprachen, Betriebssystemen, Schaltungsdesign</li>
+            <li>sehr gute Englischkenntnisse</li>
+            <li>hohes Qualitätsbewusstsein</li>
+            <li>selbstständige, eigenverantwortliche Arbeitsweise</li>
+            <li>Teamfähigkeit</li>
+            <li>Flexibilität und Organisationstalent</li>
+        </ul>
+
+
+        <h3 id="ha">Hardware-Administration</h3>
+
+        <p>
+            Die Hauptaufgabe der/s Hardware- oder auch System-Administrator:in liegt in der Verwaltung und Pflege der IT-Infrastruktur. Im Vergleich zum/r Techniker:in verlegt sie/er jedoch keine Kabel oder ist für den Aufbau von Hardware zuständig, sondern kümmert sich nahezu ausschließlich darum, dass beispielsweise die Geräte untereinander reibungslos kommunizieren oder Benutzerrechte verteilt werden.
+            <br>
+            Die Aufgaben eines Admins innerhalb einer IT-Landschaft können vielseitig sein oder auf ein bestimmtes Themengebiet beschränkt werden. Ob der/die Admin ein:e Allrounder:in oder Spezialist:in für einen Bereich ist, hängt oft von der Größe einer IT-Landschaft ab.
+        </p>
+        <p>
+            Ein:e Systemadministrator:in ist beispielsweise für die Verwaltung des EDV-Systems zuständig. Er schaut, dass Zugriffsrechte richtig verteilt sind, verwaltet zentrale Speicher bzw. Datenbanken und muss sich darum kümmern, dass die Software auf dem aktuellen Stand ist bzw. neue Tools installiert werden. Netzwerkadministratoren verwalten bspw. E-Mail-Konten und stellen sicher, dass es eine Internetverbindung gibt, und sind auch dafür zuständig, dass Geräte ohne Probleme miteinander kommunizieren.
+            <br>
+            Ein:e Serveradministrator:in ist wiederum für den Betrieb von Servern zuständig.
+        </p>
+        <p>
+            Egal ob es sich um eine:n Systemadministrator:in oder eine:n Serveradministrator:in handelt, Grundkenntnisse müssen sowohl bei Spezialist:innen als auch bei Allrounder:innen vorhanden sein. Fundierte Kenntnisse müssen sie in jedem Fall im Bereich von Betriebssystemen haben. Häufig unterschätzt werden die notwendigen Sprachkenntnisse. Jede:r Administrator:in sollte zumindest über einen Fachwortschatz in Englisch verfügen, da nicht nur viele Kommandos in dieser Sprache sind, sondern beispielsweise Support der Hersteller oftmals ausschließlich in Englisch angeboten wird.
+        </p>
+    </div>
+</section>
+<section class="page4">
+    <header>
+        <div>
+            IT-spezifischer Berufsinteressentest ITONBOARD
+            <span class="report_for">Ergebnisbericht {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+
+    <div class="content">
+        <h3 id="se">Software-Entwicklung</h3>
+
+        <p>
+            Jemand der in der Software-Entwicklung tätig ist, nennt man auch Backend-Developer oder Backend-Entwickler:in. Backend-Entwickler:innen entwickeln Systeme, fügen Ergänzungen hinzu und warten die bestehenden Systeme und Anwendungen. Bei der Entwicklung und Wartung befassen sie sich mit dem Teil einer Anwendung, die im Hintergrund läuft, d. h. für die Nutzer:innen unsichtbar ist. Im Backend geht es häufig um die Verarbeitung von Daten, die an das Frontend gesendet werden.
+        </p>
+
+        <p>
+            Zu den Aufgaben von Backend-Entwickler:innen zählen zum Beispiel:
+            <br>
+            Die Analyse der Anforderungen, die Entwicklung, Konzeption, Implementierung und Pflege eines Systems bzw. einer Anwendung; das Umsetzen und Programmieren von Systemen und Anwendungen; die Testung von Systemen und Programmen; Kundengespräche durchzuführen.
+        </p>
+
+        <p>
+            Backend-Developer benötigen Hard Skills zum Beispiel in den folgenden Bereichen:
+            <br>
+            Gute HTML5-, CSS3- und JavaScript-Kenntnisse; mindestens eine Programmiersprache, z. B. PHP, Ruby on Rails, Node.js, Python, Java, C/C++; guter Umgang mit relationalen Datenbanken und SQL; Englischkenntnisse
+        </p>
+
+        <p>
+            Darüber hinaus benötigen sie Skills, wie z.B. Teamfähigkeit, Kreativität, Organisationsgeschick und analytisches Denkvermögen.
+        </p>
+
+
+        <h3 id="ge">Gestalterischer Bereich in der IT: Entwicklung & Design</h3>
+
+        <p>
+            Im gestalterischen Bereich in der IT spricht man häufig von Frontend Developer und Frontend Designer.
+        </p>
+
+        <p>
+            Die Berufsbezeichnung Frontend Developer leitet sich vom englischen Fachbegriff „Front End“ ab, was frei übersetzt so viel bedeutet wie „vorderes Ende“ und auf die Benutzeroberfläche von webbasierten Anwendungen hinweist. Das Frontend ist somit der Teil eines IT-Systems, das näher am Anwender bzw. User ist. Demnach sind Frontend Developer als Programmierer:innen in erster Linie damit betraut, Webanwendungen zu entwickeln und den hierzu verwendeten Code stetig zu optimieren. Im Fokus steht dabei, das Nutzererlebnis mit einer Website zu erhöhen.
+        </p>
+
+        <p>
+            Frontend Designer oder auch Webdesigner erstellen und optimieren Webseiten. Sie gestalten Webseiten und setzen dabei das gewünschte „Corporate Design“ des Auftraggebers gestalterisch und technisch um, sodass Kund:innen oder ihr Unternehmen im Internet realitätsgetreu dargestellt wird. Die Kreation von Animationen, Grafiken und Layouts sowie die Menüstruktur, Chatfunktion und Sprachsteuerung gehören zu den Aufgaben, die ein Webdesigner erfüllen muss. Die weiteren Tätigkeiten eines Webdesigners sind:
+        </p>
+
+        <p>
+            Erfolgreiche Webdesigner sowie Developer sind kommunikativ, gehen auf neue Kunden zu und bilden sich in der sich schnell wandelnden technischen Welt ständig weiter.
+            <br>
+            Neben einem fundierten technischen Wissen hinsichtlich Webseiten-Gestaltung und einer kreativen Ader sind einige Soft Skills im engen Kundenkontakt ebenfalls von Vorteil.
+        </p>
+
+        <p>
+            Fremdsprachenkenntnisse sind immer Vorteile. Vor allem in Agenturen, die internationale Kunden bedienen, kann es vorkommen, dass Beratungsleistungen auf Englisch oder anderen Fremdsprachen gebucht werden.
+        </p>
+    </div>
+</section>
+<section class="page5">
+    <header>
+        <div>
+            IT-spezifischer Berufsinteressentest ITONBOARD
+            <span class="report_for">Ergebnisbericht {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+
+    <div class="content">
+        <h3 id="ka">Kaufmännischer Bereich in der IT: Vermarkten & Vertrieb</h3>
+
+        <p>
+            Einsatz finden IT-Vertriebler:innen etwa beim Vertrieb von Software, wie zum Beispiel Kommunikationslösungen für Unternehmen oder Sicherheitssoftware. Aber auch im Bereich Hardware bei Serversystemen, Telefonanlagen oder Computern.
+        </p>
+
+        <p>
+            Generell beinhaltet der Bereich Vertrieb in erster Linie den Verkauf von Waren; die Warenverteilung, auch Logistik genannt und die Pflege der Beziehungen eines Herstellers zum Handel und zum Endkunden.
+        </p>
+
+        <p>
+            Menschen, die in diesem Bereich arbeiten besitzen häufig mehrere der folgenden Eigenschaften: motivierend, überzeugend, organisiert, selbstbewusst, motiviert, mitreißend, erfolgsorientiert, ehrgeizig, kommunikativ, verantwortungsbereit und kontaktfreudig.
+        </p>
+
+        <p>
+            Zu den typischen Aufgaben im kaufmännischen Bereich zählen z.B. die wirtschaftliche Planung und das Erreichen finanzieller Ziele; Abläufe zu organisieren und zu leiten. Außerdem geht es darum, andere Personen zu überzeugen und zu motivieren (z.B. zum Kauf eines Produkts).
+        </p>
+
+
+        <h3 id="pm">Projektmanagement</h3>
+
+        <p>
+            Viele moderne Unternehmen arbeiten mittlerweile projektorientiert. Deshalb sind Projektmanager:innen für die erfolgreiche Umsetzung der Vorhaben unerlässlich. Projektmanager:innen leiten Projekte und tragen eine große Verantwortung. Sie koordinieren die ihnen zugewiesenen Projekte eines Unternehmens. Sie müssen diese Projekte mit einem dafür vorgesehenen Budget erfüllen. Sie leiten die für die Umsetzung zuständigen Teams. Projektmanager:innen überwachen und regulieren in den Unternehmensprojekten drei wesentliche Phasen.
+            <br>
+            Diese sind: Idee und Konzeption, Planung und organisatorische Durchführung.
+            <br>
+            Im Rahmen der Durchführung steuern und überwachen Projektmanager:innen die notwendigen Ressourcen wie finanzielle Mittel, Mitarbeiter und Zeit. Gute Projektmanager:innen sollten klare Führungskompetenzen aufweisen. Sie sind selbstbewusst und präsentieren ihre Vorschläge mit Überzeugung. Sie treten sicher auf und können sich auch bei Widerstand durchsetzen. Neben diesen Soft Skills benötigt ein erfolgreicher Kandidat folgende Fähigkeiten: Eigeninitiative, Problemlösungsfähigkeit, Kreativität, unternehmerisches Denken, Teamfähigkeit, kommunikative Kompetenzen, Kritikfähigkeit, Flexibilität.
+        </p>
+
+        <p>
+            Projektmanager:innen sollten in der Lage sein, klar und prägnant zu kommunizieren. Sie sind gut organisiert und koordinieren die nötigen Aufgaben mit Fristen. Ein Bewusstsein für mögliche Probleme und die Fähigkeit, Notfallpläne zu erstellen und auf Zwischenfälle zu reagieren, zeichnen eine:n gute:n Projektmanager:in ebenso aus. Projektmanager:innen brauchen eine gute Menschenkenntnis, um die Leistung und die Fähigkeiten des Teams einschätzen zu können.
+        </p>
+    </div>
+</section>
+<section class="page6">
+    <header>
+        <div>
+            IT-spezifischer Berufsinteressentest ITONBOARD
+            <span class="report_for">Ergebnisbericht {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+
+    <div class="content">
+        <h3 style="font-size: 12pt;">Wie du dich weiter informieren kannst</h3>
+
+        <p>
+            Nähere Informationen zu deinen Interessenbereichen findest du am einfachsten auf den Internetseiten der Agentur für Arbeit („Arbeitsamt“).
+            <br>
+            <a href="http://berufenet.arbeitsagentur.de" target="_blank" rel="noreferrer">http://berufenet.arbeitsagentur.de</a> (Auf der Seite unten „Suche nach Berufsfeldern“ auswählen)
+            <br>
+            Dort kannst du die zu deinen Interessenbereichen passenden Berufsfelder auswählen und so passende Berufe zu deinen Interessen finden.
+        </p>
+
+        <h4>Außerdem kannst du dich zum Beispiel an folgenden Orten informieren: </h4>
+
+        <ul>
+            <li>
+                Im Internet z.B. auch auf:
+                <ul>
+                    <li><a href="https://www.planet-beruf.de" target="_blank" rel="noreferrer">www.planet-beruf.de</a></li>
+                    <li><a href="https://www.berufe.tv" target="_blank" rel="noreferrer">www.berufe.tv</a></li>
+                    <li><a href="https://www.beroobi.de" target="_blank" rel="noreferrer">www.beroobi.de</a></li>
+                </ul>
+            </li>
+            <li>Berufsorientierungsbüro in der Schule (BOB)</li>
+            <li>Berufsinformationszentrum (BIZ) der Agentur für Arbeit</li>
+            <li>Für IT-Berufsbereiche auch interessant: <a href="https://www.itonboard.eu" target="_blank" rel="noreferrer">www.itonboard.eu</a></li>
+        </ul>
+    </div>
+</section>
+</body>
+</html>

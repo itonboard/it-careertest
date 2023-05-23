@@ -1,0 +1,19 @@
+.App {
+  text-align: center;
+}
+body{
+  background: url(/public/assets/background.webp) center center / cover #082949;
+}
+.languagePicker{
+  display: flex;
+  flex-direction: column;
+}
+.languagePickerField{
+  display: flex;
+  flex-direction: row;
+}
+
+.slide-content{
+  display: flex;
+  flex-direction: column;
+}

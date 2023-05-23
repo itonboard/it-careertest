@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Evaluation</title>
+    <style>@font-face {
+        font-family: "Calibri";
+        font-style: normal;
+        font-weight: 400;
+        src: url(https://fonts.gstatic.com/l/font?kit=J7afnpV-BGlaFfdAhLEY6w&skey=a1029226f80653a8&v=v11) format("woff2");
+    }
+
+    @font-face {
+        font-family: "Calibri";
+        font-style: normal;
+        font-weight: 700;
+        src: url(https://fonts.gstatic.com/l/font?kit=J7aanpV-BGlaFfdAjAo9_pxqHw&skey=cd2dd6afe6bf0eb2&v=v11) format("woff2");
+    }
+
+    @page {
+        size: A4;
+        margin: 12.5mm 25mm 20mm;
+
+            @bottom-right {
+            content: '- ' counter(page) ' -';
+            font-size: 7pt;
+        }
+    }
+
+    @page :first {
+        margin: 20mm 20mm 8mm;
+
+        @bottom-right {
+            content: none
+        }
+    }
+
+    :root {
+        font: normal normal 400 11pt/1.2 "Calibri", sans-serif;
+        color: #000
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box
+    }
+
+    body {
+        margin: 0;
+        padding: 0
+    }
+
+    @media screen {
+        body {
+            width: 210mm;
+            margin: 0 auto;
+            padding: 0 25mm;
+            box-sizing: border-box;
+            box-shadow: 0 0 8px hsl(0 0% 0% / 50%);
+        }
+    }
+
+    a {
+        font-weight: 700;
+        text-decoration: none;
+        color: inherit
+    }
+
+    section[class^=page] {
+        height: 297mm
+    }
+    .page1 h1 {
+        text-align: center;
+        font-weight: 700;
+        font-size: 22pt;
+        margin: 180pt 0 16pt
+    }
+
+    .page1 .subtitle {
+        text-align: center;
+        font-weight: 700;
+        margin: 0
+    }
+
+    .page1 .subtitle time {
+        display: block;
+        font-weight: 400
+    }
+
+    .page1 address {
+        display: block;
+        text-align: center;
+        font-style: normal;
+        font-size: 9pt;
+        margin: 44pt 0 0
+    }
+
+    .page1 address img {
+        width: 60.4mm;
+        display: block;
+        margin: 0 auto .5em
+    }
+
+    [class^=page] header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 10pt;
+        column-gap: 2ch;
+    }
+
+    [class^=page] header::after {
+        content: "";
+        display: block;
+        width: 91.45%;
+        height: 1pt;
+        background: #000
+    }
+
+    [class^=page] header img {
+        width: 37.3mm
+    }
+
+    [class^=page] .content h2 {
+        font-size: 14pt;
+        font-weight: 700;
+        line-height: 2;
+        margin: 0 0 1.1mm
+    }
+    [class^=page] .content p {
+        margin-bottom: 1.2em;
+    }
+    [class^=page] .content p.nmbe {
+        margin-bottom: 0;
+    }
+    [class^=page] .content ul.circle {
+        padding-left: 6em;
+    }
+    [class^=page] .content ul.circle > li {
+        list-style-type: circle;
+        padding-left: .6em;
+    }
+
+    #diagram {
+        width: 100%;
+        height: auto;
+        margin: 1rem 0 2rem
+    }
+
+    h3, h4 {
+        font-weight: 700;
+        font-size: 1rem;
+        margin: 1rem 0
+    }
+
+    h4 {
+        margin: 0
+    }
+
+    p {
+        margin: 0
+    }
+
+    ul {
+        margin: 0
+    }
+    footer {
+        margin-top: 350pt;
+        display: flex;
+        justify-content: space-between;
+    }
+    footer img {
+        width: auto;
+        height: 28pt;
+    }
+
+    span.evaluation_for,
+    span.report_for {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    span.evaluation_for {
+        width: 170mm;
+    }
+    span.report_for {
+        width: 115mm;
+    }
+    </style>
+</head>
+<body>
+<section class="page1">
+    <h1>
+        IT-specific career interest test<br>
+        ITONBOARD
+    </h1>
+    <p class="subtitle">
+        Evaluation
+        <span class="evaluation_for">for {{ first_name }} {{ last_name }}</span>
+        <time datetime="{{ date_iso }}">{{ date_str }}</time>
+    </p>
+    <address>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </address>
+    <footer class="footer">
+        <img src="{{ ia_logo }}" alt="Interaktiv">
+        <img src="{{ tb_logo }}" alt="Talenbrücke">
+        <img src="{{ kup_logo }}" alt="klein&amp;partner">
+        <img src="{{ abstract_logo }}" alt="&gt;_abstract">
+        <img src="{{ ifc_logo }}" alt="Intertnational Formation Center">
+    </footer>
+</section>
+<section class="page2">
+    <header>
+        <div>
+            IT-specific career interest test ITONBOARD
+            <span class="report_for">Results report {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+    <div class="content">
+        <h2>Your professional inclinations - Which areas of IT interest you?</h2>
+        <p>
+            In ITONBOARD's IT job interest test, you rated various jobs according to how interesting or uninteresting you find them. You awarded points from 1 to 5. These activities can be assigned to professional IT areas. The following bar chart shows you how interested you are in the different IT occupational areas. The higher the bar, the greater your interest in this area. In the bars you can also see how many points you have awarded in the respective area.
+        </p>
+        <svg id="diagram" viewBox="0 0 454 392" preserveAspectRatio="xMidYMid meet">
+            <style>
+                text {
+                    font-weight: 400;
+                    font-size: 11px;
+                    line-height: 1;
+                    font-family: "Calibri", sans-serif;
+                }
+
+                text a {
+                    color: inherit;
+                    fill: child;
+                    text-decoration: none;
+                    font-weight: inherit;
+                }
+            </style>
+            <!-- diagram background -->
+            <line x1="21.5" y1="5.5" x2="454" y2="5.5" stroke="#bababa"/>
+            <line x1="18" y1="28" x2="454" y2="28" stroke="#999"/>
+            <line x1="21.5" y1="50.5" x2="454" y2="50.5" stroke="#bababa"/>
+            <line x1="18" y1="73" x2="454" y2="73" stroke="#999"/>
+            <line x1="21.5" y1="95.5" x2="454" y2="95.5" stroke="#bababa"/>
+            <line x1="18" y1="118" x2="454" y2="118" stroke="#999"/>
+            <line x1="21.5" y1="140.5" x2="454" y2="140.5" stroke="#bababa"/>
+            <line x1="18" y1="163" x2="454" y2="163" stroke="#999"/>
+            <line x1="21.5" y1="185.5" x2="454" y2="185.5" stroke="#bababa"/>
+            <line x1="18" y1="208" x2="454" y2="208" stroke="#999"/>
+            <line x1="21.5" y1="230.5" x2="454" y2="230.5" stroke="#bababa"/>
+            <line x1="18" y1="253" x2="454" y2="253" stroke="#999"/>
+
+            <line x1="22" y1="5.5" x2="22" y2="253" stroke="#999"/>
+            <line x1="94" y1="253" x2="94" y2="257" stroke="#999"/>
+            <line x1="166" y1="253" x2="166" y2="257" stroke="#999"/>
+            <line x1="238" y1="253" x2="238" y2="257" stroke="#999"/>
+            <line x1="310" y1="253" x2="310" y2="257" stroke="#999"/>
+            <line x1="382" y1="253" x2="382" y2="257" stroke="#999"/>
+            <line x1="453.5" y1="253" x2="453.5" y2="257" stroke="#999"/>
+
+            <!-- pillars | y = 5.5 + (55 - x) / 55 * 247.5 | height = 247.5 * x / 55 -->
+            <rect x="44" y="{{ he_y }}" width="28" height="{{ he_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="116" y="{{ ha_y }}" width="28" height="{{ ha_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="188" y="{{ se_y }}" width="28" height="{{ se_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="260" y="{{ ge_y }}" width="28" height="{{ ge_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="332" y="{{ ka_y }}" width="28" height="{{ ka_height }}" fill="#bbb" stroke="#000"/>
+            <rect x="404" y="{{ pm_y }}" width="28" height="{{ pm_height }}" fill="#bbb" stroke="#000"/>
+
+            <!-- pillar labels | y = 9 + (247.5 - (x / 55 * 123.75)) -->
+            <text x="58" y="{{ he_label }}" text-anchor="middle">{{ he }}</text>
+            <text x="130" y="{{ ha_label }}" text-anchor="middle">{{ ha }}</text>
+            <text x="202" y="{{ se_label }}" text-anchor="middle">{{ se }}</text>
+            <text x="274" y="{{ ge_label }}" text-anchor="middle">{{ ge }}</text>
+            <text x="346" y="{{ ka_label }}" text-anchor="middle">{{ ka }}</text>
+            <text x="418" y="{{ pm_label }}" text-anchor="middle">{{ pm }}</text>
+
+            <!-- y axis labels -->
+            <text x="14" y="31" text-anchor="end">50</text>
+            <text x="14" y="76" text-anchor="end">40</text>
+            <text x="14" y="121" text-anchor="end">30</text>
+            <text x="14" y="166" text-anchor="end">20</text>
+            <text x="14" y="211" text-anchor="end">10</text>
+            <text x="14" y="256" text-anchor="end">0</text>
+
+            <!-- x axis labels -->
+            <text x="-258.5" y="61.5" text-anchor="end" transform="rotate(270)">
+                <a xlink:href="#he">Hardware Development</a>
+            </text>
+            <text x="-258.5" y="133.5" text-anchor="end" transform="rotate(270)">
+                <a xlink:href="#ha">Hardware Administration</a>
+            </text>
+            <text x="-258.5" y="205.5" text-anchor="end" transform="rotate(270)">
+                <a xlink:href="#se">Software Development</a>
+            </text>
+            <text y="256.5" text-anchor="middle" transform="rotate(270)">
+                <a xlink:href="#ge">
+                    <tspan x="-313" dy="1.2em">Creative area in IT</tspan>
+                    <tspan x="-313" dy="1.2em">[Development & Design]</tspan>
+                </a>
+            </text>
+            <text y="329" text-anchor="middle" transform="rotate(270)">
+                <a xlink:href="#ka">
+                    <tspan x="-308.5" dy="1.2em">Commercial area in IT</tspan>
+                    <tspan x="-308.5" dy="1.2em">[Marketing & Sales]</tspan>
+                </a>
+            </text>
+            <text x="-258.5" y="421.5" text-anchor="end" transform="rotate(270)">
+                <a xlink:href="#pm">Project Management</a>
+            </text>
+        </svg>
+        <p>
+            In the chart you can see how your current interest is distributed across different IT occupational fields. The next page briefly explains the characteristics of people working in these occupational fields and what the different fields are about, i.e. what tasks and activities a person might expect, among other things.
+        </p>
+    </div>
+</section>
+<section class="page3">
+    <header>
+        <div>
+            IT-specific career interest test ITONBOARD
+            <span class="report_for">Results report {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+    <div class="content">
+        <h3 id="he">Hardware Development</h3>
+        <p>Hardware developers are responsible for the development of devices. The term hardware includes everything that belongs to the technical equipment of a system, such as computer parts, modems, or USB sticks. A distinction is made between installed and uninstalled hardware components: Internal hardware are, for example, the components of a smartphone, whereas mouse and keyboard are external devices. Simply put, everything you can touch is hardware, while software includes all non-physical components.</p>
+        <p>To work as a hardware developer, you need a university degree, for example in electrical engineering or natural sciences.</p>
+        <p class="nmbe">No degree programme is aimed solely at hardware development, so you should always take a lot of basic knowledge in the field of IT with you and start early with further training in hardware. During your studies, you can specialize in telematics, hardware-software design or network and communication technology, for example. In addition to training and practical knowledge, you should bring the following with you:</p>
+        <ul class="circle">
+            <li>deep technical understanding and very good IT skills</li>
+            <li>confident handling of programming languages, operating systems, circuit design</li>
+            <li>very good knowledge of English</li>
+            <li>high quality awareness</li>
+            <li>independent, self-reliant way of working</li>
+            <li>ability to work in a team</li>
+            <li>Flexibility and organizational skills</li>
+        </ul>
+
+
+        <h3 id="ha">Hardware Administration</h3>
+
+        <p>
+            The main task of the hardware or system administrator is to manage and maintain the IT infrastructure. Compared to a technician, however, they do not lay cables or are responsible for setting up hardware, but they are almost exclusively concerned with ensuring that, for example, the devices communicate smoothly with each other or that user rights are distributed.
+        </p>
+        <p>
+            The tasks of an administrator within an IT landscape can be versatile or limited to a specific subject area. Whether the administrator is an all-rounder or a specialist for one area often depends on the size of an IT landscape.
+        </p>
+        <p>
+            A system administrator, for example, is responsible for managing the IT system. They make sure that access rights are correctly distributed, manages central storage or databases and has to make sure that the software is up to date or that new tools are installed. Network administrators manage email accounts, for example, and ensure that there is an internet connection, and are also responsible for ensuring that devices communicate with each other without problems.
+        </p>
+        <p>
+            The server administrator, on the other hand, is responsible for the operation of servers.
+        </p>
+        <p>
+            System or sever administrator, specialists as well as allrounders must have basic knowledge. In any case, an administrator must have sound knowledge in the area of operating systems. The necessary language skills are often underestimated. Every administrator should at least have a technical
+            vocabulary in English, since not only are many commands in this language, but support from the
+            manufacturer, for example, is often offered exclusively in English.
+        </p>
+    </div>
+</section>
+<section class="page4">
+    <header>
+        <div>
+            IT-specific career interest test ITONBOARD
+            <span class="report_for">Results report {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+
+    <div class="content">
+        <h3 id="se">Software Development</h3>
+
+        <p>
+            People working in software development are also called backend developers. Backend developers develop systems, add enhancements and maintain existing systems and applications. In development and maintenance, they deal with the part of an application that runs in the background, i.e. is invisible to the user. The backend is often about processing data that is sent to the frontend.
+        </p>
+
+        <p>
+            The tasks of a backend developer include, for example:
+        </p>
+        <p>
+            Analyzing requirements, developing, designing, implementing and maintaining a system or application; implementing and programming systems and applications; testing systems and programs; conducting customer meetings.
+        </p>
+
+        <p>
+            Backend developers need hard skills in the following areas, for example:
+        </p>
+        <p>
+            Good HTML5, CSS3 and JavaScript skills; at least one programming language, e.g. PHP, Ruby on Rails, Node.js, Python, Java, C/C++; good handling of relational databases and SQL; English skills.
+        </p>
+
+        <p>
+            In addition, you need skills such as the ability to work in a team, creativity, organizational skills and analytical thinking.
+        </p>
+
+
+        <h3 id="ge">Creative area in IT: Development & Design</h3>
+
+        <p>
+            In the creative field in IT, we often speak of frontend developers and frontend designers
+        </p>
+
+        <p>
+            The job title frontend developer is derived from the technical term "front end", which refers to the user interface of web-based applications. The frontend is therefore the part of an IT system that is closer to the user. Accordingly, the frontend developer as a programmer is primarily entrusted with developing web applications and constantly optimizing the code used for this purpose. The focus is on enhancing the user experience with a website.
+        </p>
+
+        <p>
+            Frontend designers or web designers create and optimize websites. They design websites and implement the client's desired "corporate design" both creatively and technically, so that the client or their company is represented realistically on the Internet. The creation of animations, graphics, and layouts as well as the menu structure, chat function and voice control are among the tasks a web designer must fulfil. Other activities of a web designer include:
+        </p>
+
+        <p>
+            Successful web designers as well as developers are communicative, approach new clients, and
+            constantly educate themselves in the rapidly changing technical world.
+            <br>
+            In addition to a sound technical knowledge of website design and a creative streak, some soft skills in close customer contact are also an advantage.
+        </p>
+
+        <p>
+            Foreign language skills are always an advantage. Especially in agencies that serve international clients, it may happen that consulting services are booked in English or other foreign languages.
+        </p>
+    </div>
+</section>
+<section class="page5">
+    <header>
+        <div>
+            IT-specific career interest test ITONBOARD
+            <span class="report_for">Results report {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+
+    <div class="content">
+        <h3 id="ka">Commercial area in IT: Marketing & Sales</h3>
+
+        <p>
+            IT salespeople are employed in the sale of software, such as communication solutions for companies or security software – as well as in the area of hardware for server systems, telephone systems or computers.
+            <br>
+            In general, the area of sales primarily includes the sale of goods, the distribution of goods, also called logistics, and the maintenance of a manufacturer's relationships with the trade and the end customer.
+            <br>
+            People who work in this field often possess several of the following characteristics: motivating, persuasive, organized, self-confident, motivated, engaging, success-oriented, ambitious, communicative, responsible, and outgoing.
+        </p>
+
+        <p>
+            Typical tasks in the commercial field include, for example, economic planning and achieving financial goals, organizing and managing processes. It also involves convincing and motivating other people (e.g., to buy a product).
+        </p>
+
+
+        <h3 id="pm">Project Management</h3>
+
+        <p>
+            Many modern companies now work on a project-oriented basis. Therefore, project managers are essential for the successful implementation of projects. Project managers lead projects and bear a great deal of responsibility. Project managers coordinate the projects assigned to them in a company. They have to complete these projects with a budget allocated to them. They lead the teams that are responsible for implementation. Project managers monitor and regulate three major phases in company projects.
+            <br>
+            These are: idea and conception, planning, and organizational implementation. During implementation, project managers control and monitor the necessary resources such as financial resources, staff, and time. Good project managers should have clear leadership skills. They are self-confident and present their proposals with conviction. They appear confident and can assert themselves even in the face of resistance. In addition to these soft skills, a successful candidate needs the following skills: Initiative, problem-solving skills, creativity, entrepreneurial thinking, teamwork skills, communication skills, critical faculties, flexibility.
+        </p>
+
+        <p>
+            Project managers should be able to communicate clearly and concisely. They are well organized and coordinate the necessary tasks with deadlines. An awareness of potential problems and the ability to make contingency plans and respond to incidents are also characteristics of a good project manager. Project managers need good people skills to be able to assess the performance and capabilities of the team.
+        </p>
+    </div>
+</section>
+<section class="page6">
+    <header>
+        <div>
+            IT-specific career interest test ITONBOARD
+            <span class="report_for">Results report {{ first_name }} {{ last_name }}</span>
+        </div>
+        <img src="{{ logo }}" alt="ITONBOARD">
+    </header>
+
+    <div class="content">
+        <h3 style="font-size: 12pt;">How you can find out more</h3>
+
+        <p>
+            <span style="font-size: 12pt;">For Germany:</span> The easiest way to find more information about your areas of interest is to visit the
+            website of the Employment Agency.
+            <br>
+            <a href="http://berufenet.arbeitsagentur.de" target="_blank" rel="noreferrer">http://berufenet.arbeitsagentur.de</a> (Select "Search for occupational fields" on the page below)
+            <br>
+            There you can select the occupational fields that match your areas of interest and thus find occupations that match your interests.
+        </p>
+
+        <h4>You can also get information at the following places, for example:</h4>
+
+        <ul>
+            <li>
+                On the internet, e.g.:
+                <ul>
+                    <li><a href="https://www.planet-beruf.de" target="_blank" rel="noreferrer">www.planet-beruf.de</a></li>
+                    <li><a href="https://www.berufe.tv" target="_blank" rel="noreferrer">www.berufe.tv</a></li>
+                    <li><a href="https://www.beroobi.de" target="_blank" rel="noreferrer">www.beroobi.de</a></li>
+                </ul>
+            </li>
+            <li>Vocational guidance office at school (BOB)</li>
+            <li>Vocational information centre (BIZ) at the employment agency (Agentur für Arbeit)</li>
+            <li>Also interesting: <a href="https://www.itonboard.eu" target="_blank" rel="noreferrer">www.itonboard.eu</a></li>
+        </ul>
+    </div>
+</section>
+</body>
+</html>

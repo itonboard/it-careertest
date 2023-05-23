@@ -1,0 +1,93 @@
+.btn {
+  --padding: 10vmin;
+  position: fixed;
+  inset: calc(var(--padding) + 1vh) var(--padding) auto auto;
+  appearance: none;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: hsl(0 0% 100% / 50%);
+  cursor: pointer;
+}
+.btn:where(:hover, :focus) {
+  color: hsl(0 0% 100%);
+}
+
+.wrapper {
+  --anim-duration: 300ms;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+}
+.wrapper[data-state='closed'] {
+  visibility: hidden;
+}
+.wrapper[data-state='opening'] {
+  animation: open var(--anim-duration) linear;
+}
+.wrapper[data-state='closing'] {
+  animation: close var(--anim-duration) linear;
+}
+
+.backdrop {
+  width: 100%;
+  height: 100%;
+  background-color: hsl(0 0% 0% / 40%);
+}
+
+.modal {
+  position: absolute;
+  isolation: isolate;
+  inset: auto 0 0;
+  background-color: hsl(0 0% 100%);
+  box-shadow: 0 0 12px 0 hsl(0 0% 0% / 20%);
+  color: hsl(0 0% 20%);
+  border-radius: 1rem 1rem 0 0;
+  padding: 10vmin;
+}
+.modal a {
+  color: inherit;
+}
+.modal > :not(:last-child, .close)::after {
+  content: '';
+  display: block;
+  width: 75%;
+  height: 1px;
+  background-color: hsl(0 0% 80%);
+  margin-block: 2rem;
+  margin-inline: auto;
+}
+.license img {
+  display: block;
+  margin-block: 1.2em .8em;
+}
+
+.close {
+  --size: 1em;
+  position: absolute;
+  inset: calc(10vmin - var(--size)) calc(10vmin - var(--size)) auto auto;
+  appearance: none;
+  background: none;
+  border: none;
+  color: hsl(0 0% 50%);
+  font-size: var(--size);
+  cursor: pointer;
+}
+
+@keyframes open {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes close {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

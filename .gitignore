@@ -1,0 +1,6 @@
+.env
+.port.env
+supervisord.conf
+supervisord.pid
+.venv/
+log/
